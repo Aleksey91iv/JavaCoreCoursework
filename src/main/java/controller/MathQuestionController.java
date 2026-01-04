@@ -4,19 +4,19 @@ import model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.JavaQuestionService;
+import service.MathQuestionService;
 import service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("exam/java")
-public class JavaQuestionController {
+@RequestMapping("exam/math")
+public class MathQuestionController {
 
     @Autowired
     private final QuestionService questionService;
 
-    public JavaQuestionController(JavaQuestionService javaQuestionService) {
+    public MathQuestionController(MathQuestionService javaQuestionService) {
         this.questionService = javaQuestionService;
     }
 

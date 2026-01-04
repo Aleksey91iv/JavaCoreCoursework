@@ -1,12 +1,14 @@
 package service;
 
 import model.Question;
+import model.Subject;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 
 @Service
 public interface QuestionService {
+    Subject getSubject();
     Question add(String question, String answer);
     Question add(Question question);
     Question getRandomQuestion();

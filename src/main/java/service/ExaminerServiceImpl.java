@@ -1,6 +1,7 @@
 package service;
 
 import model.Question;
+import model.Subject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -9,16 +10,21 @@ import java.util.Collection;
 import java.util.HashSet;
 
 @Service
-public class ExaminerServiceImpl implements ExaminerService {
+public class ExaminerServiceImpl extends NamedSingletonService implements ExaminerService {
 
-    private final QuestionService questionService;
+    private final QuestionServicesStorage questionServicesStorage;
 
-    public ExaminerServiceImpl(QuestionService questionService) {
-        this.questionService = questionService;
+    public ExaminerServiceImpl(QuestionServicesStorage questionServicesStorage) {
+        this.questionServicesStorage = questionServicesStorage;
     }
 
     @Override
-    public Collection<Question> getQuestions(Integer amount) {
+    public Collection<Question> getQuestions(Subject subject, Integer amount) {
+        QuestionService questionService = questionServicesStorage.getQuestionService(subject);
+        if (questionService == null) {
+            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+        }
+
         Collection<Question> allQuestions = questionService.getAll();
         HashSet<Question> resultCollection = new HashSet<>();
         if (allQuestions.size() < amount || amount == 0) {
@@ -36,5 +42,10 @@ public class ExaminerServiceImpl implements ExaminerService {
             resultCollection.add(question);
         }
         return resultCollection;
+    }
+
+    @Override
+    public String getNameService() {
+        return "ExamService";
     }
 }
