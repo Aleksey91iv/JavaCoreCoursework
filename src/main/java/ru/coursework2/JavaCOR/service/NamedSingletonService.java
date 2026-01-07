@@ -1,4 +1,4 @@
-package service;
+package ru.coursework2.JavaCOR.service;
 
 import java.util.Objects;
 

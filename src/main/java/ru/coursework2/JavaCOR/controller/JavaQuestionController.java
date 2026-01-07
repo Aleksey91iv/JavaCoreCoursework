@@ -1,27 +1,28 @@
-package controller;
+package ru.coursework2.JavaCOR.controller;
 
-import model.Question;
+import ru.coursework2.JavaCOR.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.MathQuestionService;
-import service.QuestionService;
+import ru.coursework2.JavaCOR.service.JavaQuestionService;
+import ru.coursework2.JavaCOR.service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("exam/math")
-public class MathQuestionController {
+@RequestMapping("java")
+public class JavaQuestionController {
 
     @Autowired
-    private final QuestionService questionService;
+    private final JavaQuestionService questionService;
 
-    public MathQuestionController(MathQuestionService javaQuestionService) {
+    public JavaQuestionController(JavaQuestionService javaQuestionService) {
         this.questionService = javaQuestionService;
     }
 
-    @PostMapping
-    public ResponseEntity<Question> createQuestion(@PathVariable String question, @PathVariable String answer) {
+    @PostMapping("/addraw")
+    @ResponseBody
+    public ResponseEntity<Question> createQuestion(@RequestParam String question, @RequestParam String answer) {
         Question returnedQuestion = questionService.add(question, answer);
         if (returnedQuestion == null) {
             return ResponseEntity.badRequest().build();
@@ -29,7 +30,7 @@ public class MathQuestionController {
         return ResponseEntity.ok(returnedQuestion);
     }
 
-    @PostMapping
+    @PostMapping("/addbody")
     public ResponseEntity<Question> createQuestion(@RequestBody Question question) {
         Question returnedQuestion = questionService.add(question);
         if (returnedQuestion == null) {
@@ -43,7 +44,7 @@ public class MathQuestionController {
         return questionService.getAll();
     }
 
-    @GetMapping
+    @GetMapping("/random")
     public ResponseEntity<Question> getRandomQuestion() {
         Question randomQuestion = questionService.getRandomQuestion();
         if (randomQuestion == null) {
@@ -54,10 +55,6 @@ public class MathQuestionController {
 
     @DeleteMapping
     public ResponseEntity<Question> deleteQuestion(@RequestBody Question question) {
-        Question removedQuestion = questionService.remove(question);
-        if (removedQuestion == null) {
-            return ResponseEntity.noContent().build();
-        }
-        return ResponseEntity.ok(removedQuestion);
+        return ResponseEntity.ok(questionService.remove(question));
     }
 }

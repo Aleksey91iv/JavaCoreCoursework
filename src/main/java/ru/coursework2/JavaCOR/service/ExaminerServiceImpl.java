@@ -1,7 +1,7 @@
-package service;
+package ru.coursework2.JavaCOR.service;
 
-import model.Question;
-import model.Subject;
+import ru.coursework2.JavaCOR.model.Question;
+import ru.coursework2.JavaCOR.model.Subject;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.HttpClientErrorException;
@@ -12,9 +12,9 @@ import java.util.HashSet;
 @Service
 public class ExaminerServiceImpl extends NamedSingletonService implements ExaminerService {
 
-    private final QuestionServicesStorage questionServicesStorage;
+    private final QuestionStorageServices questionServicesStorage;
 
-    public ExaminerServiceImpl(QuestionServicesStorage questionServicesStorage) {
+    public ExaminerServiceImpl(QuestionStorageServices questionServicesStorage) {
         this.questionServicesStorage = questionServicesStorage;
     }
 
@@ -22,7 +22,7 @@ public class ExaminerServiceImpl extends NamedSingletonService implements Examin
     public Collection<Question> getQuestions(Subject subject, Integer amount) {
         QuestionService questionService = questionServicesStorage.getQuestionService(subject);
         if (questionService == null) {
-            throw new HttpClientErrorException(HttpStatus.BAD_REQUEST);
+            throw new HttpClientErrorException(HttpStatus.METHOD_NOT_ALLOWED);
         }
 
         Collection<Question> allQuestions = questionService.getAll();

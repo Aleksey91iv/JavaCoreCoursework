@@ -1,7 +1,7 @@
-package service;
+package ru.coursework2.JavaCOR.service;
 
-import model.QuestionsRepository;
-import model.Subject;
+import ru.coursework2.JavaCOR.model.QuestionsRepository;
+import ru.coursework2.JavaCOR.model.Subject;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 public class JavaQuestionService extends SubjectQuestionService {
 
     public JavaQuestionService(QuestionsRepository questionsRepository,
-                               QuestionServicesStorage questionServicesStorage) {
+                               QuestionStorageServices questionServicesStorage) {
         super(Subject.JAVA, questionsRepository, questionServicesStorage);
     }
 

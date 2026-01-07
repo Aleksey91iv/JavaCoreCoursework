@@ -1,23 +1,19 @@
-package controller;
+package ru.coursework2.JavaCOR.controller;
 
-import model.Question;
-import model.Subject;
+import org.springframework.web.bind.annotation.*;
+import ru.coursework2.JavaCOR.model.Question;
+import ru.coursework2.JavaCOR.model.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.HttpClientErrorException;
-import service.ExaminerService;
-import service.ExaminerServiceImpl;
+import ru.coursework2.JavaCOR.service.ExaminerService;
+import ru.coursework2.JavaCOR.service.ExaminerServiceImpl;
 
-import java.util.Arrays;
 import java.util.Collection;
 
 @RestController
-@RequestMapping("exam/test")
+@RequestMapping("exam")
 public class ExamController {
 
     @Autowired
@@ -27,8 +23,9 @@ public class ExamController {
         this.examinerService = examinerService;
     }
 
-    @GetMapping("{amount}")
-    public ResponseEntity<Collection<Question>> getExamQuestions(@PathVariable String subject, @PathVariable Integer amount) {
+    @GetMapping
+    @ResponseBody
+    public ResponseEntity<Collection<Question>> getExamQuestions(@RequestParam String subject, @RequestParam Integer amount) {
         try {
             if (ObjectUtils.containsConstant(Subject.values(), subject.toUpperCase(), true)) {
                 return ResponseEntity.ok(

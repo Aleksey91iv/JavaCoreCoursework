@@ -1,8 +1,8 @@
-package service;
+package ru.coursework2.JavaCOR.service;
 
-import model.Question;
-import model.Subject;
 import org.springframework.stereotype.Service;
+import ru.coursework2.JavaCOR.model.Question;
+import ru.coursework2.JavaCOR.model.Subject;
 
 import java.util.Collection;
 

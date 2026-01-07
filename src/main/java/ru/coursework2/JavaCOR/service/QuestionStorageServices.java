@@ -1,6 +1,6 @@
-package service;
+package ru.coursework2.JavaCOR.service;
 
-import model.Subject;
+import ru.coursework2.JavaCOR.model.Subject;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
@@ -9,10 +9,10 @@ import java.util.HashMap;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
-public class QuestionServicesStorage {
+public class QuestionStorageServices {
     private final HashMap<Subject, QuestionService> questionServices;
 
-    public QuestionServicesStorage() {
+    public QuestionStorageServices() {
         questionServices = new HashMap<>();
     }
 

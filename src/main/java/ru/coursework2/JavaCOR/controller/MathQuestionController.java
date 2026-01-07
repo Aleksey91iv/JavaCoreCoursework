@@ -1,26 +1,26 @@
-package controller;
+package ru.coursework2.JavaCOR.controller;
 
-import model.Question;
+import ru.coursework2.JavaCOR.model.Question;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-import service.JavaQuestionService;
-import service.QuestionService;
+import ru.coursework2.JavaCOR.service.MathQuestionService;
+import ru.coursework2.JavaCOR.service.QuestionService;
 
 import java.util.Collection;
 
 @RestController
-@RequestMapping("exam/java")
-public class JavaQuestionController {
+@RequestMapping("math")
+public class MathQuestionController {
 
     @Autowired
-    private final QuestionService questionService;
+    private final MathQuestionService questionService;
 
-    public JavaQuestionController(JavaQuestionService javaQuestionService) {
+    public MathQuestionController(MathQuestionService javaQuestionService) {
         this.questionService = javaQuestionService;
     }
 
-    @PostMapping
+    @PostMapping("/addquestion")
     public ResponseEntity<Question> createQuestion(@PathVariable String question, @PathVariable String answer) {
         Question returnedQuestion = questionService.add(question, answer);
         if (returnedQuestion == null) {

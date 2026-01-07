@@ -1,4 +1,4 @@
-package model;
+package ru.coursework2.JavaCOR.model;
 
 import java.util.Objects;
 
