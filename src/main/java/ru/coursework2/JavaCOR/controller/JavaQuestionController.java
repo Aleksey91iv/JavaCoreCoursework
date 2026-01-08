@@ -5,7 +5,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.coursework2.JavaCOR.service.JavaQuestionService;
-import ru.coursework2.JavaCOR.service.QuestionService;
 
 import java.util.Collection;
 

@@ -9,9 +9,8 @@ import org.springframework.stereotype.Service;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class MathQuestionService extends SubjectQuestionService {
-    public MathQuestionService(QuestionsRepository questionsRepository,
-                               QuestionStorageServices questionServicesStorage) {
-        super(Subject.MATH, questionsRepository, questionServicesStorage);
+    public MathQuestionService(QuestionsRepository questionsRepository) {
+        super(Subject.MATH, questionsRepository);
     }
 
     @Override

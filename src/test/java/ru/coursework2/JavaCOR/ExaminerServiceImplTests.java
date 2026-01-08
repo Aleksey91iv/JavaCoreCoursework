@@ -10,7 +10,6 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Repository;
 import org.springframework.web.client.HttpClientErrorException;
 import ru.coursework2.JavaCOR.service.ExaminerServiceImpl;
 import ru.coursework2.JavaCOR.service.JavaQuestionService;
@@ -46,7 +45,7 @@ public class ExaminerServiceImplTests {
     void amountIsMoreSubjectQuestions() {
         ExaminerServiceImpl testedService = new ExaminerServiceImpl(questionServicesStorage);
 
-        Mockito.doReturn(new JavaQuestionService(questionsRepository, questionServicesStorage)).when(questionServicesStorage).getQuestionService(Subject.JAVA);
+        Mockito.doReturn(new JavaQuestionService(questionsRepository)).when(questionServicesStorage).getQuestionService(Subject.JAVA);
         HashSet<Question> questions = new HashSet<>();
         questions.add(new Question("1+1", "2"));
         questions.add(new Question("1+2", "3"));
@@ -66,7 +65,7 @@ public class ExaminerServiceImplTests {
     void amountQuestionsIsExist() {
         ExaminerServiceImpl testedService = new ExaminerServiceImpl(questionServicesStorage);
 
-        Mockito.doReturn(new JavaQuestionService(questionsRepository, questionServicesStorage)).when(questionServicesStorage).getQuestionService(Subject.JAVA);
+        Mockito.doReturn(new JavaQuestionService(questionsRepository)).when(questionServicesStorage).getQuestionService(Subject.JAVA);
         HashSet<Question> questions = new HashSet<>();
         questions.add(new Question("1+1", "2"));
         questions.add(new Question("1+2", "3"));

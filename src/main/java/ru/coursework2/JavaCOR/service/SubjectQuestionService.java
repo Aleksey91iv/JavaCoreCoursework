@@ -11,13 +11,9 @@ public abstract class SubjectQuestionService extends NamedSingletonService imple
     private final Subject subject;
 
     public SubjectQuestionService(Subject subject,
-                                  QuestionsRepository questionsRepository,
-                                  QuestionStorageServices questionServicesStorage) {
+                                  QuestionsRepository questionsRepository) {
         this.questionsRepository = questionsRepository;
         this.subject = subject;
-        if (questionServicesStorage != null) {
-            questionServicesStorage.registerSubjectQuestionService(this);
-        }
     }
 
     @Override

@@ -9,7 +9,6 @@ import org.springframework.util.ObjectUtils;
 import org.springframework.web.client.HttpClientErrorException;
 import ru.coursework2.JavaCOR.service.ExaminerService;
 import ru.coursework2.JavaCOR.service.ExaminerServiceImpl;
-
 import java.util.Collection;
 
 @RestController

@@ -10,9 +10,8 @@ import org.springframework.stereotype.Service;
 @Scope(value = ConfigurableBeanFactory.SCOPE_SINGLETON)
 public class JavaQuestionService extends SubjectQuestionService {
 
-    public JavaQuestionService(QuestionsRepository questionsRepository,
-                               QuestionStorageServices questionServicesStorage) {
-        super(Subject.JAVA, questionsRepository, questionServicesStorage);
+    public JavaQuestionService(QuestionsRepository questionsRepository) {
+        super(Subject.JAVA, questionsRepository);
     }
 
     @Override
