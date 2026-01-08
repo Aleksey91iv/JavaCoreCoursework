@@ -29,7 +29,6 @@ public class ExaminerServiceImplTests {
 
     @Test
     void isNotFoundSubjectService() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         ExaminerServiceImpl testedService = new ExaminerServiceImpl(questionServicesStorage);
 
         Mockito.doReturn(null).when(questionServicesStorage).getQuestionService(Subject.JAVA);
@@ -45,7 +44,6 @@ public class ExaminerServiceImplTests {
 
     @Test
     void amountIsMoreSubjectQuestions() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         ExaminerServiceImpl testedService = new ExaminerServiceImpl(questionServicesStorage);
 
         Mockito.doReturn(new JavaQuestionService(questionsRepository, questionServicesStorage)).when(questionServicesStorage).getQuestionService(Subject.JAVA);
@@ -66,7 +64,6 @@ public class ExaminerServiceImplTests {
 
     @Test
     void amountQuestionsIsExist() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         ExaminerServiceImpl testedService = new ExaminerServiceImpl(questionServicesStorage);
 
         Mockito.doReturn(new JavaQuestionService(questionsRepository, questionServicesStorage)).when(questionServicesStorage).getQuestionService(Subject.JAVA);

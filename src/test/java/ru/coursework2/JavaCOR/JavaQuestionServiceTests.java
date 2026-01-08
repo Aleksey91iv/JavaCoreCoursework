@@ -27,7 +27,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isAddQuestionFromFields() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Question empty = new Question("yes?", "");
@@ -56,7 +55,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isAddQuestionObjectExist() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Question question = new Question("yes?", "no");
@@ -78,7 +76,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isGetAllFromNotEmpty() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Set<Question> questionsMock = new HashSet<>();
@@ -102,7 +99,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isGetAllFromEmpty() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Set<Question> questionsMock = new HashSet<>();
@@ -115,7 +111,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isGetRandomQuestionFromEmpty() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Set<Question> questionsMock = new HashSet<>();
@@ -127,7 +122,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isGetRandomQuestionFromNotEmpty() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Set<Question> questionsMock = new HashSet<>();
@@ -146,7 +140,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isRemovableQuestionExist() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Question question = new Question("yes?", "no");
@@ -157,7 +150,6 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isRemovableQuestionNotExist() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
 
         Question question = new Question("yes?", "no");
@@ -168,9 +160,7 @@ public class JavaQuestionServiceTests {
 
     @Test
     void isGetSubjectJava() {
-        Repository mockRepository = Mockito.mock(Repository.class);
         JavaQuestionService testedService = new JavaQuestionService(questionsRepository, questionServicesStorage);
-
         Assertions.assertTrue(testedService.getSubject() == Subject.JAVA);
     }
 }
